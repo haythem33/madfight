@@ -1,5 +1,5 @@
 #include "soldier.hpp"
-
+#include <math.h>
 //constructor
 soldier::soldier(float life,float defance,float attack,int speed,int unitNum) {
    soldier::life = life;
@@ -42,4 +42,25 @@ void soldier::set_unitNum(int num) {
 }
 int soldier::get_unitNum() {
     return soldier::unitNum;
+}
+//create the line Direction for a unit
+void soldier::createLineDirection(sf::Vector2f start ,sf::Vector2f target) {
+    // calculate angle
+    float dx = target.x - start.x;
+    float dy = target.y - start.y;
+    const float pi = 3.1415f;
+    float angle = (atan2(dy,dx)) * 180.0f / pi;
+    soldier::line_direction.setRotation(angle);
+    // normalizing width with distance
+    float width = sqrtf(dx * dx + dy * dy);
+    soldier::line_direction.setSize(sf::Vector2f(width,20));
+    soldier::line_direction.setPosition(start);
+    soldier::line_direction.setOrigin(0,0);
+    soldier::line_direction.setFillColor(sf::Color(236, 157, 88));
+    soldier::line_direction.setOutlineColor(sf::Color(217,106,9));
+    soldier::line_direction.setOutlineThickness(2);
+
+}
+sf::RectangleShape soldier::getLineDirection() {
+    return soldier::line_direction;
 }

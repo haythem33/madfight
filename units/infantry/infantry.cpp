@@ -32,6 +32,7 @@ void infantry::set_direction(sf::Vector2f mouseP)
        infantry::target = mouseP;
        float angle = infantry::calculate_angle(infantry::shape.getPosition().x,infantry::shape.getPosition().y,mouseP.x,mouseP.y);
        infantry::shape.setRotation(angle);
+       infantry::createLineDirection(infantry::shape.getPosition(),infantry::target); 
     }
 }
 // calculate the mouse angle relative to shape position

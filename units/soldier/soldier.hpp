@@ -1,3 +1,5 @@
+#include <SFML/Graphics.hpp>
+
 class soldier {
     private: 
     float life;
@@ -5,6 +7,7 @@ class soldier {
     float attack;
     int speed;
     int unitNum;
+    sf::RectangleShape line_direction;
     public :
     // constructor
     soldier(float life,float defance,float attack,int speed,int unitNum);
@@ -23,4 +26,7 @@ class soldier {
     // getter and setter for soldier unit number
     void set_unitNum(int num);
     int get_unitNum();
+    // create the line Direction for a unit
+    void createLineDirection(sf::Vector2f start,sf::Vector2f target);
+    sf::RectangleShape getLineDirection();
 };

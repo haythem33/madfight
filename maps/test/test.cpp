@@ -33,6 +33,7 @@ void test::render(sf::RenderWindow& window) {
         window.clear();
         loadBackGroud(window);
         window.draw(sol.get_Shape());
+        window.draw(sol.getLineDirection());
         window.display();
     }
 }
